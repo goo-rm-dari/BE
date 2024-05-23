@@ -15,7 +15,7 @@ CREATE TABLE `plogging_record` (
     `moving_time` INT NOT NULL,
     `moving_distance` DOUBLE NOT NULL,
     `created_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `updated_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    `modified_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 DROP TABLE IF EXISTS `moving_coordinate`;
@@ -25,7 +25,7 @@ CREATE TABLE `moving_coordinate` (
     `lat` DOUBLE NOT NULL,
     `lng` DOUBLE NOT NULL,
     `created_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `updated_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `modified_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT fk_plogging_record_mc
         FOREIGN KEY (plogging_record_id) 
         REFERENCES plogging_record(plogging_record_id)
@@ -38,7 +38,7 @@ CREATE TABLE `trash_coordinate` (
     `lat` DOUBLE NOT NULL,
     `lng` DOUBLE NOT NULL,
     `created_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `updated_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `modified_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT fk_plogging_record_fc
         FOREIGN KEY (plogging_record_id) 
         REFERENCES plogging_record(plogging_record_id)
@@ -52,6 +52,6 @@ CREATE TABLE `member` (
     `platform` VARCHAR(255),
     `platform_id` VARCHAR(255),
     `created_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `updated_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `modified_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     UNIQUE (`email`, `platform`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
