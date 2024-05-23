@@ -26,7 +26,7 @@ CREATE TABLE `moving_coordinate` (
     `lng` DOUBLE NOT NULL,
     `created_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    CONSTRAINT fk_plogging_record
+    CONSTRAINT fk_plogging_record_mc
         FOREIGN KEY (plogging_record_id) 
         REFERENCES plogging_record(plogging_record_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -39,7 +39,7 @@ CREATE TABLE `trash_coordinate` (
     `lng` DOUBLE NOT NULL,
     `created_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    CONSTRAINT fk_plogging_record
+    CONSTRAINT fk_plogging_record_fc
         FOREIGN KEY (plogging_record_id) 
         REFERENCES plogging_record(plogging_record_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
