@@ -23,7 +23,10 @@ public class PloggingRecord extends BaseTime {
     private String memberId;
 
     @OneToMany(mappedBy = "ploggingRecord", fetch = FetchType.LAZY)
-    private List<CoordinateInfo> coordinateInfos = new ArrayList<>();
+    private List<MovingCoordinate> movingCoordinates = new ArrayList<>();
+
+    @OneToMany(mappedBy = "ploggingRecord", fetch = FetchType.LAZY)
+    private List<TrashCoordinate> trashCoordinates = new ArrayList<>();
 
     @Column(name = "count", nullable = false)
     private int count;
@@ -37,16 +40,18 @@ public class PloggingRecord extends BaseTime {
     @Column(name = "moving_distance", nullable = false)
     private double movingDistance;
 
-    public PloggingRecord(String memberId, List<CoordinateInfo> coordinateInfos, int count, double totalCalories, int movingTime, double movingDistance) {
+    public PloggingRecord(String memberId, List<MovingCoordinate> movingCoordinates, List<TrashCoordinate> trashCoordinates, int count, double totalCalories, int movingTime, double movingDistance) {
         this.memberId = memberId;
-        this.coordinateInfos = coordinateInfos;
+        this.movingCoordinates = movingCoordinates;
+        this.trashCoordinates = new ArrayList<>();
         this.count = count;
         this.totalCalories = totalCalories;
         this.movingTime = movingTime;
         this.movingDistance = movingDistance;
     }
 
-    public void setCoordinateInfos(List<CoordinateInfo> coordinateInfos) {
-        this.coordinateInfos = coordinateInfos;
+    public void setCoordinates(List<MovingCoordinate> movingCoordinateInfos, List<TrashCoordinate> trashCoordinateInfos) {
+        this.movingCoordinates = movingCoordinateInfos;
+        this.trashCoordinates = trashCoordinateInfos;
     }
 }

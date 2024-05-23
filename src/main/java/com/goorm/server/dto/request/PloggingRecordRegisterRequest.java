@@ -16,10 +16,13 @@ public class PloggingRecordRegisterRequest {
     private String memberId;
 
     @NotNull(message = "1005:공백일 수 없습니다.")
-    private List<CoordinateInfoDTO> coordinateInfos;
+    private List<CoordinateInfoDTO> movingCoordinates;
 
     @NotNull(message = "1005:공백일 수 없습니다.")
-    private int count;
+    private List<CoordinateInfoDTO> trashCoordinates;
+
+    @NotNull(message = "1005:공백일 수 없습니다.")
+    private int trashCount;
 
     @NotNull(message = "1005:공백일 수 없습니다.")
     private double totalCalories;

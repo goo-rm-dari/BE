@@ -13,6 +13,4 @@ public class CoordinateInfoDTO {
     private double lat;
 
     private double lng;
-
-    private boolean isTrash;
 }
