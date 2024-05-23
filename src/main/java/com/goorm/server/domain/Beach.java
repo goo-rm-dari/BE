@@ -18,9 +18,9 @@ public enum Beach {
 
     public static Beach fromString(String beachName) {
         return switch (beachName.toUpperCase()) {
-            case "GWANGCHIGI" -> GWANGCHIGI;
-            case "HYEOPJAE" -> HYEOPJAE;
-            case "HAMDEOK" -> HAMDEOK;
+            case "gwangchigi" -> GWANGCHIGI;
+            case "hyeopjae" -> HYEOPJAE;
+            case "hamdeok" -> HAMDEOK;
             default -> throw new InvalidParameterException();
         };
     }

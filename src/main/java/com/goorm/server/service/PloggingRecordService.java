@@ -10,9 +10,9 @@ import com.goorm.server.dto.response.PloggingRecordRegisterResponse;
 import com.goorm.server.dto.response.PloggingRecordResponse;
 import com.goorm.server.repository.CoordinateInfoRepository;
 import com.goorm.server.repository.PloggingRecordRepository;
-import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,8 +92,8 @@ public class PloggingRecordService {
         return new PloggingRecordListResponse(ploggingRecordResponses);
     }
 
-    public PloggingRecordListResponse getTotalTrashCount(String name) {
-
-        return null;
-    }
+//    public TotalTrashResponse getTotalTrashCount(String name) {
+//        int totalTrashCount = coordinateInfoRepository.countByBeach(Beach.fromString(name));
+//        return new TotalTrashResponse(totalTrashCount);
+//    }
 }
