@@ -37,6 +37,7 @@ CREATE TABLE `trash_coordinate` (
     `plogging_record_id` BIGINT,
     `lat` DOUBLE NOT NULL,
     `lng` DOUBLE NOT NULL,
+    `beach` VARCHAR(255) NOT NULL,
     `created_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `modified_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT fk_plogging_record_fc
