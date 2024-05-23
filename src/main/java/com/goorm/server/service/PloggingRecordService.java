@@ -93,6 +93,7 @@ public class PloggingRecordService {
 
         List<PloggingRecordResponse> ploggingRecordResponses = ploggingRecords.stream()
                 .map(ploggingRecord -> new PloggingRecordResponse(
+                        ploggingRecord.getId(),
                         ploggingRecord.getCreatedTime().toLocalDateTime().toLocalDate(),
                         ploggingRecord.getMovingCoordinates().stream()
                                 .map(coordinateInfo -> new CoordinateInfoDTO(coordinateInfo.getLat(), coordinateInfo.getLng()))
