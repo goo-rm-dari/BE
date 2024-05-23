@@ -55,7 +55,7 @@ public class PloggingRecordService {
     }
 
     @Transactional(readOnly = true)
-    public PloggingRecordListResponse getPloggingRecords(Long memberId) {
+    public PloggingRecordListResponse getPloggingRecords(String memberId) {
         List<PloggingRecord> ploggingRecords = ploggingRecordRepository.findByMemberId(memberId);
         if (ploggingRecords.isEmpty()) {
             return new PloggingRecordListResponse(new ArrayList<>());

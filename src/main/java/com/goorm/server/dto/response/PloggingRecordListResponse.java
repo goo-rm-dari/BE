@@ -9,5 +9,5 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 public class PloggingRecordListResponse {
-    private List<PloggingRecordResponse> data;
+    private List<PloggingRecordResponse> info;
 }

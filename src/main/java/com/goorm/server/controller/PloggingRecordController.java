@@ -28,7 +28,7 @@ public class PloggingRecordController {
 
     @Operation(summary = "사용자 전체 기록 조회")
     @GetMapping("/{memberId}")
-    public Response<?> getPloggingRecords(@PathVariable Long memberId) {
+    public Response<?> getPloggingRecords(@PathVariable String memberId) {
         PloggingRecordListResponse response = ploggingRecordService.getPloggingRecords(memberId);
         return Response.ofSuccess("OK", response);
     }

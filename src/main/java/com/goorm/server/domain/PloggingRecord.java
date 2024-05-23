@@ -20,7 +20,7 @@ public class PloggingRecord extends BaseTime {
     private Long id;
 
     @Column(name = "member_id", nullable = false)
-    private Long memberId;
+    private String memberId;
 
     @OneToMany(mappedBy = "ploggingRecord", fetch = FetchType.LAZY)
     private List<CoordinateInfo> coordinateInfos = new ArrayList<>();
@@ -37,7 +37,7 @@ public class PloggingRecord extends BaseTime {
     @Column(name = "moving_distance", nullable = false)
     private double movingDistance;
 
-    public PloggingRecord(Long memberId, List<CoordinateInfo> coordinateInfos, int count, double totalCalories, int movingTime, double movingDistance) {
+    public PloggingRecord(String memberId, List<CoordinateInfo> coordinateInfos, int count, double totalCalories, int movingTime, double movingDistance) {
         this.memberId = memberId;
         this.coordinateInfos = coordinateInfos;
         this.count = count;

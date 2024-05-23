@@ -5,8 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface PloggingRecordRepository extends JpaRepository<PloggingRecord, Long> {
-    List<PloggingRecord> findAllByMemberId(Long memberId);
+public interface PloggingRecordRepository extends JpaRepository<PloggingRecord, String> {
+    List<PloggingRecord> findAllByMemberId(String memberId);
 
-    List<PloggingRecord> findByMemberId(Long memberId);
+    List<PloggingRecord> findByMemberId(String memberId);
 }

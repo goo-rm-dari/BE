@@ -13,7 +13,7 @@ import java.util.List;
 public class PloggingRecordRegisterRequest {
 
     @NotNull(message = "1005:공백일 수 없습니다.")
-    private Long memberId;
+    private String memberId;
 
     @NotNull(message = "1005:공백일 수 없습니다.")
     private List<CoordinateInfoDTO> coordinateInfos;
