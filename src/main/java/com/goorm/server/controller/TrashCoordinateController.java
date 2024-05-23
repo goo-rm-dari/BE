@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "TrashCoordinate", description = "쓰레기 좌표 관련 API")
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/trash")
+@RequestMapping("/api/trash")
 public class TrashCoordinateController {
 
     private final TrashCoordinateService trashCoordinateService;
