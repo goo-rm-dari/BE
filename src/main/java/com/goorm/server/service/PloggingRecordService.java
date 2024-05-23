@@ -39,7 +39,7 @@ public class PloggingRecordService {
                 request.getMemberId(),
                 new ArrayList<>(),
                 new ArrayList<>(),
-                request.getTrashCount(),
+                request.getTrashCoordinates().size(),
                 request.getTotalCalories(),
                 request.getMovingTime(),
                 request.getMovingDistance()
@@ -100,7 +100,7 @@ public class PloggingRecordService {
                         ploggingRecord.getTrashCoordinates().stream()
                                 .map(coordinateInfo -> new CoordinateInfoDTO(coordinateInfo.getLat(), coordinateInfo.getLng()))
                                 .collect(Collectors.toList()),
-                        ploggingRecord.getCount(),
+                        ploggingRecord.getTrashCount(),
                         ploggingRecord.getTotalCalories(),
                         ploggingRecord.getMovingTime(),
                         ploggingRecord.getMovingDistance()

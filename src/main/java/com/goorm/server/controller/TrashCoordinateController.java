@@ -1,6 +1,7 @@
 package com.goorm.server.controller;
 
 import com.goorm.server.domain.Beach;
+import com.goorm.server.dto.response.BeachInfoResponse;
 import com.goorm.server.dto.response.Response;
 import com.goorm.server.dto.response.TotalTrashResponse;
 import com.goorm.server.service.TrashCoordinateService;
@@ -28,7 +29,21 @@ public class TrashCoordinateController {
             @Parameter(description = "해변 이름", example = "GWANGCHIGI")
             Beach beach
     ) {
-        TotalTrashResponse response = trashCoordinateService.getTotalTrashCount(beach);
+        TotalTrashResponse response = trashCoordinateService.findTotalTrashCount(beach);
         return Response.ofSuccess("OK", response);
+    }
+
+    @Operation(summary = "쓰레기가 존재하는 가까운 해변 조회")
+    @GetMapping("/nearby-beach")
+    public Response<?> getNearbyBeachesWithTrash(
+            @RequestParam
+            @Parameter(description = "현재 위도", example = "33.450004")
+            double lat,
+            @RequestParam
+            @Parameter(description = "현재 경도", example = "126.918574")
+            double lng
+    ) {
+        BeachInfoResponse beaches = trashCoordinateService.findNearbyBeachesWithTrash(lat, lng);
+        return Response.ofSuccess("OK", beaches);
     }
 }
