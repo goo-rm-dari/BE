@@ -33,7 +33,7 @@ dependencies {
 	implementation 'com.sun.xml.bind:jaxb-core:4.0.1'
 	implementation 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-	implementation 'mysql:mysql-connector-java:8.0.32'
+	implementation 'org.mariadb.jdbc:mariadb-java-client'
 	implementation platform('org.springframework.cloud:spring-cloud-dependencies:2021.0.5')
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'

@@ -1,24 +1,9 @@
 spring:
   datasource:
-    url: ${MYSQL_URL}
-    username: ${MYSQL_USERNAME}
-    password: ${MYSQL_PASSWORD}
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-    open-in-view: false
-    properties:
-      hibernate:
-        create_empty_composites:
-          enabled: true
-        format_sql: true
-        default_batch_fetch_size: 100
-  task:
-    execution:
-      pool:
-        core-size: 2
-        max-size: 10
-        queue-capacity: 20
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://mariadb:3306/krampoline?allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: root
 
 security.jwt.token:
   secret-key: testtesttesttesttesttesttesttesttestttttest
