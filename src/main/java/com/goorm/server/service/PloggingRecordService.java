@@ -110,4 +110,24 @@ public class PloggingRecordService {
 
         return new PloggingRecordListResponse(ploggingRecordResponses);
     }
+
+    @Transactional(readOnly = true)
+    public PloggingRecordResponse getPloggingRecord(Long recordId) {
+        PloggingRecord ploggingRecord = ploggingRecordRepository.findById(recordId);
+
+        return new PloggingRecordResponse(
+                ploggingRecord.getId(),
+                ploggingRecord.getCreatedTime().toLocalDateTime().toLocalDate(),
+                ploggingRecord.getMovingCoordinates().stream()
+                        .map(coordinateInfo -> new CoordinateInfoDTO(coordinateInfo.getLat(), coordinateInfo.getLng()))
+                        .collect(Collectors.toList()),
+                ploggingRecord.getTrashCoordinates().stream()
+                        .map(coordinateInfo -> new CoordinateInfoDTO(coordinateInfo.getLat(), coordinateInfo.getLng()))
+                        .collect(Collectors.toList()),
+                ploggingRecord.getTrashCount(),
+                ploggingRecord.getTotalCalories(),
+                ploggingRecord.getMovingTime(),
+                ploggingRecord.getMovingDistance()
+        );
+    }
 }
