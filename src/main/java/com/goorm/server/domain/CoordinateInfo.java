@@ -31,10 +31,18 @@ public class CoordinateInfo extends BaseTime {
     @Column(name = "is_trash", nullable = false)
     private boolean isTrash;
 
+    @Column(name = "beach", nullable = false)
+    private Beach beach;
+
     public CoordinateInfo(PloggingRecord ploggingRecord, double lat, double lng, Boolean isTrash) {
         this.ploggingRecord = ploggingRecord;
         this.lat = lat;
         this.lng = lng;
         this.isTrash = isTrash;
+        this.beach = Beach.DEFAULT;
+    }
+
+    public void setBeach(Beach beach) {
+        this.beach = beach;
     }
 }

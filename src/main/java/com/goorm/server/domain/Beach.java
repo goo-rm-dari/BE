@@ -11,7 +11,8 @@ public enum Beach {
 
     GWANGCHIGI("gwangchigi"),
     HYEOPJAE("hyeopjae"),
-    HAMDEOK("hamdeok");
+    HAMDEOK("hamdeok"),
+    DEFAULT("default");
 
     private final String beachName;
 

@@ -1,5 +1,6 @@
 package com.goorm.server.service;
 
+import com.goorm.server.domain.Beach;
 import com.goorm.server.domain.CoordinateInfo;
 import com.goorm.server.domain.PloggingRecord;
 import com.goorm.server.dto.request.CoordinateInfoDTO;
@@ -23,6 +24,10 @@ public class PloggingRecordService {
 
     private final PloggingRecordRepository ploggingRecordRepository;
     private final CoordinateInfoRepository coordinateInfoRepository;
+    private static final double GWANGCHIGI_LAT_MIN = 33.447152;
+    private static final double GWANGCHIGI_LAT_MAX = 33.449596;
+    private static final double GWANGCHIGI_LNG_MIN = 126.918158;
+    private static final double GWANGCHIGI_LNG_MAX = 126.961237;
 
     @Transactional
     public PloggingRecordRegisterResponse registerPloggingRecord(PloggingRecordRegisterRequest request) {
@@ -38,12 +43,15 @@ public class PloggingRecordService {
 
         List<CoordinateInfo> coordinateInfos = new ArrayList<>();
         for (var coordinateInfoDTO : request.getCoordinateInfos()) {
+
             CoordinateInfo coordinateInfo = new CoordinateInfo(
                     savedPloggingRecord,
                     coordinateInfoDTO.getLat(),
                     coordinateInfoDTO.getLng(),
                     coordinateInfoDTO.isTrash()
             );
+            Beach beach = determineSeaByLocation(coordinateInfoDTO.getLat(), coordinateInfoDTO.getLng());
+            coordinateInfo.setBeach(beach);
             coordinateInfos.add(coordinateInfo);
         }
         coordinateInfoRepository.saveAll(coordinateInfos);
@@ -52,6 +60,13 @@ public class PloggingRecordService {
         return new PloggingRecordRegisterResponse(
                 savedPloggingRecord.getId()
         );
+    }
+
+    private Beach determineSeaByLocation(double lat, double lng) {
+        if (lat >= GWANGCHIGI_LAT_MIN && lat <= GWANGCHIGI_LAT_MAX && lng >= GWANGCHIGI_LNG_MIN && lng <= GWANGCHIGI_LNG_MAX) {
+            return Beach.GWANGCHIGI;
+        }
+        return Beach.DEFAULT;
     }
 
     @Transactional(readOnly = true)
@@ -78,6 +93,7 @@ public class PloggingRecordService {
     }
 
     public PloggingRecordListResponse getTotalTrashCount(String name) {
+
         return null;
     }
 }
