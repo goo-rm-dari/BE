@@ -4,6 +4,10 @@ spring:
     url: jdbc:mariadb://mariadb:3306/krampoline?allowPublicKeyRetrieval=true&useSSL=false
     username: root
     password: root
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
 
 security.jwt.token:
   secret-key: testtesttesttesttesttesttesttesttestttttest
