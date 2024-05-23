@@ -29,7 +29,7 @@ public class PloggingRecordService {
     private final TrashCoordinateInfoRepository trashCoordinateInfoRepository;
 
     private static final double GWANGCHIGI_LAT_MIN = 33.447152;
-    private static final double GWANGCHIGI_LAT_MAX = 33.449596;
+    private static final double GWANGCHIGI_LAT_MAX = 33.450895;
     private static final double GWANGCHIGI_LNG_MIN = 126.918158;
     private static final double GWANGCHIGI_LNG_MAX = 126.961237;
 
@@ -64,6 +64,9 @@ public class PloggingRecordService {
                     coordinateInfoDTO.getLat(),
                     coordinateInfoDTO.getLng()
             );
+
+            Beach beach = determineSeaByLocation(coordinateInfoDTO.getLat(), coordinateInfoDTO.getLng());
+            coordinateInfo.setBeach(beach);
             trashCoordinateInfos.add(coordinateInfo);
         }
         trashCoordinateInfoRepository.saveAll(trashCoordinateInfos);
@@ -106,9 +109,4 @@ public class PloggingRecordService {
 
         return new PloggingRecordListResponse(ploggingRecordResponses);
     }
-
-//    public TotalTrashResponse getTotalTrashCount(String name) {
-//        int totalTrashCount = coordinateInfoRepository.countByBeach(Beach.fromString(name));
-//        return new TotalTrashResponse(totalTrashCount);
-//    }
 }

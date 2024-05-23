@@ -28,9 +28,18 @@ public class TrashCoordinate extends BaseTime {
     @Column(name = "lng", nullable = false)
     private double lng;
 
+    @Column(name = "beach", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Beach beach;
+
     public TrashCoordinate(PloggingRecord ploggingRecord, double lat, double lng) {
         this.ploggingRecord = ploggingRecord;
         this.lat = lat;
         this.lng = lng;
+        this.beach = Beach.DEFAULT;
+    }
+
+    public void setBeach(Beach beach) {
+        this.beach = beach;
     }
 }
