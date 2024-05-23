@@ -22,9 +22,6 @@ public class PloggingRecordRegisterRequest {
     private List<CoordinateInfoDTO> trashCoordinates;
 
     @NotNull(message = "1005:공백일 수 없습니다.")
-    private int trashCount;
-
-    @NotNull(message = "1005:공백일 수 없습니다.")
     private double totalCalories;
 
     @NotNull(message = "1005:공백일 수 없습니다.")

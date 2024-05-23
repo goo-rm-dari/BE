@@ -28,8 +28,8 @@ public class PloggingRecord extends BaseTime {
     @OneToMany(mappedBy = "ploggingRecord", fetch = FetchType.LAZY)
     private List<TrashCoordinate> trashCoordinates = new ArrayList<>();
 
-    @Column(name = "count", nullable = false)
-    private int count;
+    @Column(name = "trash_count", nullable = false)
+    private int trashCount;
 
     @Column(name = "total_calories", nullable = false)
     private double totalCalories;
@@ -40,11 +40,12 @@ public class PloggingRecord extends BaseTime {
     @Column(name = "moving_distance", nullable = false)
     private double movingDistance;
 
-    public PloggingRecord(String memberId, List<MovingCoordinate> movingCoordinates, List<TrashCoordinate> trashCoordinates, int count, double totalCalories, int movingTime, double movingDistance) {
+    public PloggingRecord(String memberId, List<MovingCoordinate> movingCoordinates, List<TrashCoordinate> trashCoordinates,
+                          int trashCount, double totalCalories, int movingTime, double movingDistance) {
         this.memberId = memberId;
         this.movingCoordinates = movingCoordinates;
-        this.trashCoordinates = new ArrayList<>();
-        this.count = count;
+        this.trashCoordinates = trashCoordinates;
+        this.trashCount = trashCount;
         this.totalCalories = totalCalories;
         this.movingTime = movingTime;
         this.movingDistance = movingDistance;

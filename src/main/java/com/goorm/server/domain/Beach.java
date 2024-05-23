@@ -9,18 +9,18 @@ import java.security.InvalidParameterException;
 @Getter
 public enum Beach {
 
-    GWANGCHIGI("gwangchigi"),
-    HYEOPJAE("hyeopjae"),
-    HAMDEOK("hamdeok"),
-    DEFAULT("default");
+    GWANGCHIGI("GWANGCHIGI"),
+    HYEOPJAE("HYEOPJAE"),
+    HAMDEOK("HAMDEOK"),
+    DEFAULT("DEFAULT");
 
     private final String beachName;
 
     public static Beach fromString(String beachName) {
         return switch (beachName.toUpperCase()) {
-            case "gwangchigi" -> GWANGCHIGI;
-            case "hyeopjae" -> HYEOPJAE;
-            case "hamdeok" -> HAMDEOK;
+            case "GWANGCHIGI" -> GWANGCHIGI;
+            case "HYEOPJAE" -> HYEOPJAE;
+            case "HAMDEOK" -> HAMDEOK;
             default -> throw new InvalidParameterException();
         };
     }
