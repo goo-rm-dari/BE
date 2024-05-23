@@ -7,15 +7,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "coordinate_info")
+@Table(name = "trash_coordinate")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class CoordinateInfo extends BaseTime {
+public class TrashCoordinate extends BaseTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "coordinate_info_id")
+    @Column(name = "trash_coordinate_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -28,21 +28,9 @@ public class CoordinateInfo extends BaseTime {
     @Column(name = "lng", nullable = false)
     private double lng;
 
-    @Column(name = "is_trash", nullable = false)
-    private boolean isTrash;
-
-    @Column(name = "beach", nullable = false)
-    private Beach beach;
-
-    public CoordinateInfo(PloggingRecord ploggingRecord, double lat, double lng, Boolean isTrash) {
+    public TrashCoordinate(PloggingRecord ploggingRecord, double lat, double lng) {
         this.ploggingRecord = ploggingRecord;
         this.lat = lat;
         this.lng = lng;
-        this.isTrash = isTrash;
-        this.beach = Beach.DEFAULT;
-    }
-
-    public void setBeach(Beach beach) {
-        this.beach = beach;
     }
 }

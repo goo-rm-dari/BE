@@ -12,8 +12,9 @@ import java.util.List;
 @ToString
 public class PloggingRecordResponse {
     private LocalDate createdTime;
-    private List<CoordinateInfoDTO> coordinates;
-    private int count;
+    private List<CoordinateInfoDTO> movingCoordinates;
+    private List<CoordinateInfoDTO> trashCoordinates;
+    private int trashCount;
     private double totalCalorie;
     private int movingTime;
     private double movingDistance;
