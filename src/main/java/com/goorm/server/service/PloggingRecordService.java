@@ -76,4 +76,8 @@ public class PloggingRecordService {
 
         return new PloggingRecordListResponse(ploggingRecordResponses);
     }
+
+    public PloggingRecordListResponse getTotalTrashCount(String name) {
+        return null;
+    }
 }

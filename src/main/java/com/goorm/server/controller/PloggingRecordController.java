@@ -6,6 +6,7 @@ import com.goorm.server.dto.response.PloggingRecordRegisterResponse;
 import com.goorm.server.dto.response.Response;
 import com.goorm.server.service.PloggingRecordService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,17 @@ public class PloggingRecordController {
     @GetMapping("/{memberId}")
     public Response<?> getPloggingRecords(@PathVariable String memberId) {
         PloggingRecordListResponse response = ploggingRecordService.getPloggingRecords(memberId);
+        return Response.ofSuccess("OK", response);
+    }
+
+    @Operation(summary = "해변에서 주운 쓰레기 횟수 조회")
+    @GetMapping("/total-trash-count")
+    public Response<?> getTotalTrashCount(
+            @RequestParam(required = false, defaultValue = "gwangchigi")
+            @Parameter(description = "해변 이름", example = "gwangchigi")
+            String beachName
+    ) {
+        PloggingRecordListResponse response = ploggingRecordService.getTotalTrashCount(beachName);
         return Response.ofSuccess("OK", response);
     }
 }
