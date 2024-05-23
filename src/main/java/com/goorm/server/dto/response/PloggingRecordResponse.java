@@ -11,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 public class PloggingRecordResponse {
+    private Long recordId;
     private LocalDate createdTime;
     private List<CoordinateInfoDTO> movingCoordinates;
     private List<CoordinateInfoDTO> trashCoordinates;
