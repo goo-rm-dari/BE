@@ -31,7 +31,7 @@ public class CoordinateInfo extends BaseTime {
     @Column(name = "is_trash", nullable = false)
     private boolean isTrash;
 
-    public CoordinateInfo(PloggingRecord ploggingRecord, double lat, double lng, boolean isTrash) {
+    public CoordinateInfo(PloggingRecord ploggingRecord, double lat, double lng, Boolean isTrash) {
         this.ploggingRecord = ploggingRecord;
         this.lat = lat;
         this.lng = lng;
